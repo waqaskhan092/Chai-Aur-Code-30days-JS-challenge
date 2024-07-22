@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 9: DOM Manipulation Tasks</title>
+  </head>
+  <body>
+    <!-- 
+          Day 9: DOM Manipulation 
+          Tasks/Activities: 
+          Activity 1: Selecting and Manipulating Elements 
+          • Task 1: Select an HTML element by its ID and change its text content. 
+     -->
+
+    <p id="myElement">Original Text</p>
+
+    <script>
+      document.getElementById("myElement").textContent = "Changed Text";
+    </script>
+
+    <!--  
+        • Task 2: Select an HTML element by its class and change its background color. 
+    -->
+
+    <div class="myClass" style="background-color: red; padding: 10px">
+      This is a div element.
+    </div>
+
+    <script>
+      document.querySelector(".myClass").style.backgroundColor = "lightblue";
+    </script>
+
+    <!-- 
+          Activity 2: Creating and Appending Elements
+        • Task 3: Create a new div element with some text content and append it to the body.
+-->
+    <script>
+      let newDiv = document.createElement("div");
+      newDiv.textContent = "This is a new div element.";
+      document.body.appendChild(newDiv);
+    </script>
+    <!-- 
+        • Task 4: Create a new li element and add it to an existing ul list. 
+-->
+
+    <ul id="myList">
+      <li>Existing Item 1</li>
+      <li>Existing Item 2</li>
+    </ul>
+
+    <script>
+      // Create a new li element
+      let newLi = document.createElement("li");
+      newLi.textContent = "New List Item";
+
+      // Select the existing ul list
+      let ulList = document.getElementById("myList");
+
+      // Add the new li element to the ul list
+      ulList.appendChild(newLi);
+    </script>
+
+    <!-- 
+          Activity 3: Removing Elements
+          • Task 5: Select an HTML element and remove it from the DOM.
+-->
+    <div id="removeMe">This element will be removed.</div>
+
+    <script>
+      let elementToRemove = document.getElementById("removeMe");
+
+      elementToRemove.remove();
+    </script>
+    <!-- 
+          • Task 6: Remove the last child of a specific HTML element.
+-->
+
+    <ul id="listToRemoveLastChild">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+    <script>
+      let ulElement = document.getElementById("listToRemoveLastChild");
+      ulElement.removeChild(ulElement.lastElementChild);
+    </script>
+
+    <!-- 
+          Activity 4: Modifying Attributes and Classes
+          • Task 7: Select an HTML element and change one of its attributes (e.g., src of an img tag).
+    -->
+    <img id="myImage" src="old-image.jpg" alt="Old Image" />
+
+    <script>
+      let imgElement = document.getElementById("myImage");
+      imgElement.setAttribute("src", "new-image.jpg");
+    </script>
+
+    <!-- 
+          • Task 8: Add and remove a CSS class to/ from an HTML element.
+    -->
+
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+
+    <p id="myParagraph">This is a paragraph.</p>
+
+    <script>
+      let paragraph = document.getElementById("myParagraph");
+      paragraph.classList.add("highlight");
+      paragraph.classList.remove("highlight");
+    </script>
+
+    <!-- 
+        Activity 5: Event Handling
+        • Task 9: Add a click event listener to a button that changes the text content of a paragraph.
+    -->
+
+    <button id="myButton" onclick="changeParagraphText()">Change Text</button>
+    <p id="myParagraphToChange">Original Text</p>
+
+    <script>
+      let button = document.getElementById("myButton");
+      let paragraphToChange = document.getElementById("myParagraphToChange");
+
+      function changeParagraphText() {
+        paragraphToChange.textContent = "Text has been changed!";
+      }
+    </script>
+
+    <!-- 
+        • Task 10: Add a mouseover event listener to an element that changes its border color.
+    -->
+    <div
+      id="changeBorder"
+      onmouseover="changeBorderColor()"
+      onmouseout="changerBorderColorBack()"
+      style="border: 5px solid black; padding: 10px; cursor: pointer"
+    >
+      Div to change border color
+    </div>
+
+    <script>
+      let divToChangeBorder = document.getElementById("changeBorder");
+
+      function changeBorderColor() {
+        divToChangeBorder.style.borderColor = "red";
+      }
+      function changerBorderColorBack() {
+        divToChangeBorder.style.borderColor = "black";
+      }
+    </script>
+  </body>
+</html>

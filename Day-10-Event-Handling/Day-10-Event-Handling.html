@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day-10-Event-Handling</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: #000;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        background-color: #d8c791;
+        padding: 5px 0px;
+        margin: 5px 0px;
+      }
+      h3 {
+        background: #be6c3a;
+        padding: 10px 5px;
+        margin: 10px 0px;
+        color: white;
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Day 10: Event Handling</h1>
+    <h1>Tasks/Activities:</h1>
+    <h2>Activity 1: Basic Event Handling</h2>
+    <h3>
+      • Task 1: Add a click event listener to a button that changes the text
+      content of a paragraph.
+    </h3>
+
+    <button id="myButton">Change Text</button>
+    <p id="myParagraph">Original Text</p>
+
+    <script>
+      let button = document.getElementById("myButton");
+      let paragraph = document.getElementById("myParagraph");
+
+      button.addEventListener("click", () => {
+        paragraph.textContent = "Text has been changed!";
+      });
+    </script>
+
+    <h3>
+      • Task 2: Add a double-click event listener to an image that toggles its
+      visibility.
+    </h3>
+
+    <img
+      id="myImage"
+      src="chaiaurcode.jpg"
+      alt="Example Image"
+      style="width: 200px"
+    />
+
+    <script>
+      let image = document.getElementById("myImage");
+
+      image.addEventListener("dblclick", () => {
+        if (image.style.display === "none") {
+          image.style.display = "block";
+        } else {
+          image.style.display = "none";
+        }
+      });
+    </script>
+
+    <h2>Activity 2: Mouse Events</h2>
+    <h3>
+      • Task 3: Add a mouseover event listener to an element that changes its
+      background color.
+    </h3>
+
+    <div
+      id="myDiv"
+      style="
+        width: 50%;
+        border: 1px solid black;
+        font-size: 20px;
+        text-align: center;
+        padding: 20px 0px;
+        background-color: #e7e5e5;
+      "
+    >
+      On mouseover on this div event listener changes its background color.
+    </div>
+
+    <script>
+      let divElement = document.getElementById("myDiv");
+
+      divElement.addEventListener("mouseover", () => {
+        divElement.style.backgroundColor = "#d9b604";
+      });
+    </script>
+
+    <h3>
+      • Task 4: Add a mouseout event listener to an element that resets its
+      background color.
+    </h3>
+    <div
+      id="divMouseOut"
+      style="
+        width: 50%;
+        border: 1px solid black;
+        font-size: 20px;
+        text-align: center;
+        padding: 20px 0px;
+        background-color: #e7e5e5;
+      "
+    >
+      This is a dive on which mouseout event listener resets it's background
+      color
+    </div>
+
+    <script>
+      let divMouseOut = document.getElementById("divMouseOut");
+      divMouseOut.addEventListener("mouseover", () => {
+        divMouseOut.style.backgroundColor = "#d9b604";
+      });
+      divMouseOut.addEventListener("mouseout", () => {
+        divMouseOut.style.backgroundColor = "#e7e5e5";
+      });
+    </script>
+
+    <h2>Activity 3: Keyboard Events</h2>
+    <h3>
+      • Task 5: Add a keydown event listener to an input field that logs the key
+      pressed to the console.
+    </h3>
+
+    <input type="text" id="myInput" placeholder="Type something..." />
+    <p id="output">Key pressed:</p>
+
+    <script>
+      let inputField = document.getElementById("myInput");
+      let oputPutPg = document.getElementById("output");
+
+      inputField.addEventListener("keydown", (event) => {
+        oputPutPg.textContent = `Key pressed: ${event.key}`;
+      });
+    </script>
+
+    <h3>
+      • Task 6: Add a keyup event listener to an input field that displays the
+      current value in a paragraph.
+    </h3>
+
+    <input type="text" id="inputKeyUP" placeholder="Type something..." />
+    <p id="outputKeyUp">Current value:</p>
+
+    <script>
+      let inputKeyUP = document.getElementById("inputKeyUP");
+      let outputParagraph = document.getElementById("outputKeyUp");
+
+      inputKeyUP.addEventListener("keyup", () => {
+        outputParagraph.textContent = `Current value: ${inputKeyUP.value}`;
+      });
+    </script>
+
+    <h2>Activity 4: Form Events</h2>
+    <h3>
+      • Task 7: Add a submit event listener to a form that prevents the default
+      submission and logs the form data to the console.
+    </h3>
+    <form id="myForm">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formInputData" style="font-size: 20px"></p>
+
+    <script>
+      let form = document.getElementById("myForm");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let formData = new FormData(form);
+        let formDataOutput = document.getElementById("formInputData");
+
+        for (let [key, value] of formData.entries()) {
+          formDataOutput.textContent = `${key}: ${value}`;
+        }
+      });
+    </script>
+
+    <h3>
+      • Task 8: Add a change event listener to a select dropdown that displays
+      the selected value in a paragraph.
+    </h3>
+
+    <select id="mySelect">
+      <option value="option1">JavaScript</option>
+      <option value="option2">React Js</option>
+      <option value="option3">Next Js</option>
+    </select>
+    <p id="outputListData">Selected value:</p>
+
+    <script>
+      let selectDropdown = document.getElementById("mySelect");
+      let outputListData = document.getElementById("outputListData");
+
+      selectDropdown.addEventListener("change", () => {
+        // Display the selected value in the paragraph
+        outputListData.textContent = `Selected value: ${selectDropdown.value}`;
+      });
+    </script>
+
+    <h2>Activity 5: Event Delegation</h2>
+    <h3>
+      • Task 9: Add a click event listener to a list that logs the text content
+      of the clicked list item using event delegation.
+    </h3>
+
+    <ul id="myList2">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    <p id="listOutput">nothing clicked</p>
+
+    <script>
+      let list = document.getElementById("myList2");
+      let listOutput = document.getElementById("listOutput");
+
+      list.addEventListener("click", (event) => {
+        if (event.target.tagName === "LI") {
+          listOutput.textContent = `Clicked item: ${event.target.textContent}`;
+        }
+      });
+    </script>
+
+    <h3>
+      • Task 10: Add an event listener to a parent element that listens for
+      events from dynamically added child elements.
+    </h3>
+
+    <div id="parentDiv">
+      <button id="addButton">Add Child</button>
+    </div>
+    <p id="parentListerOutput">Parent Listner</p>
+
+    <script>
+      // Select the parent element
+      let parentDiv = document.getElementById("parentDiv");
+      let parentListerOutput = document.getElementById("parentListerOutput");
+      let btnId = 1;
+
+      // Add a click event listener to the parent element
+      parentDiv.addEventListener("click", (event) => {
+        // Check if the clicked element is a button
+        if (
+          event.target.tagName === "BUTTON" &&
+          event.target !== document.getElementById("addButton")
+        ) {
+          parentListerOutput.textContent = `Clicked button: ${event.target.textContent}`;
+        }
+      });
+
+      // Add a click event listener to the button that adds new child elements
+      document.getElementById("addButton").addEventListener("click", () => {
+        // Create a new button element
+        let newButton = document.createElement("button");
+        newButton.textContent = `button ${btnId++}`;
+
+        // Append the new button to the parent div
+        parentDiv.appendChild(newButton);
+      });
+    </script>
+  </body>
+</html>
